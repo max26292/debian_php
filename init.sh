@@ -21,7 +21,6 @@ echo "no-auto-rehash" >> /etc/mysql/my.cnf
 echo "[myisamchk]" >> /etc/mysql/my.cnf
 chmod 755 /var/run
 chmod 777 /var/lib/mysql
-mkdir /var/run/mysqld
 chown -R mysql /var/lib/mysql
 chown -R mysql /var/run/mysqld
 chgrp -R mysql /var/lib/mysql
