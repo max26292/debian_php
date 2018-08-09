@@ -25,7 +25,9 @@ COPY ./init.sh /
 COPY ./start.sh /
 COPY ./php.ini /etc/php/7.2/cli/
 RUN chmod 755 /init.sh && \
+    chmod +x /init.sh && \
     chmod 777 /start.sh &&\
+    chmod +x /start.sh && \
     /init.sh
 VOLUME [ "/var/lib/mysql" ]
 ENTRYPOINT [ "start.sh" ]
