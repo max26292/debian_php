@@ -23,9 +23,9 @@ RUN \
     apt-key add /tmp/RPM-GPG-KEY-mysql && \
     apt-get install -y debconf-utils && \
     apt-get -y update && \
-    /bin/bash export DEBIAN_FRONTEND="noninteractive" && \
-    /bin/bash debconf-set-selections <<< "mysql-server mysql-server/root_password password root" && \
-    /bin/bash debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root" && \
+    export DEBIAN_FRONTEND="noninteractive" && \
+    debconf-set-selections << "mysql-server mysql-server/root_password password root" && \
+    debconf-set-selections << "mysql-server mysql-server/root_password_again password root" && \
     apt-get install -y mysql-community-server && \    
     # apt-get install -y mariadb-client mariadb-server && \
     apt-get -y upgrade   
