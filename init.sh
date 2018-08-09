@@ -6,15 +6,23 @@ if [ ! -f "$SERVER_NAME_FILE" ]; then
    a2enconf servername
 fi
 ###### Config mysql 
+### create my.conf
+echo "[mysqld]" >> /etc/my.cnf
+echo "port=3306" >> /etc/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/my.cnf
+echo "datadir=/var/lib/mysql" >>/etc/my.cnf
+echo "[client]" >> /etc/my.cnf
+echo "port=3306" >> /etc/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/my.cnf
+echo "[mysql]" >> /etc/my.cnf
+echo "no-auto-rehash" >> /etc/my.cnf
+echo "[myisamchk]" >> /etc/my.cnf
+echo "set-variable= key_buffer=128M" >> /etc/my.cnf
+service mysql start
 chmod 775 /var/run/mysqld
 chmod 777 /var/lib/mysql
-service mysql start
 mysql -uroot -e "CREATE USER 'root'@'%';"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
-echo "#!/bin/bash" >/init_database.sh
-echo 'mysql -uroot -e "CREATE DATABASE IF NOT EXISTS  ${MYSQL_DATABASE} ;"' >>/init_database.sh
-echo 'mysql -uroot -e "CREATE USER IF NOT EXISTS ${MYSQL_USER@% IDENTIFIED BY ${MYSQL_PASSWORD} ;"' >>/init_database.sh
-echo 'mysql -uroot -e "GRANT ALL ON ${MYSQL_DATABASE}.* TO ${MYSQL_USER}@% WITH GRANT OPTION ; FLUSH PRIVILEGES;" '>>/init_database.sh
 chmod 755 /init_database.sh
 /init_database.sh
 service mysql stop
