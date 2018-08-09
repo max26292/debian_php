@@ -22,7 +22,7 @@ RUN \
     wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql && \
     apt-key add /tmp/RPM-GPG-KEY-mysql && \
     apt-get -y update && \
-    apt-get install -y mysql-server mysql-client && \    
+    apt-get install -y mysql-community-server mysql-client && \    
     # apt-get install -y mariadb-client mariadb-server && \
     apt-get -y upgrade   
 EXPOSE 80 8080 3306 3307 9000
