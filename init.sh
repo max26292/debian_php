@@ -23,7 +23,7 @@ echo "[myisamchk]" >> /etc/mysql/my.cnf
 echo "set-variable= key_buffer=128M" >> /etc/mysql/my.cnf
 mysql_install_db
 service mysql stop
-chmod 775 /var/run/mysqld
+chmod 755 /var/run
 chmod 777 /var/lib/mysql
 service mysql start
 mysql -uroot -e "CREATE USER 'root'@'%';"
