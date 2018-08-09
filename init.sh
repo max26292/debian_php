@@ -7,18 +7,23 @@ if [ ! -f "$SERVER_NAME_FILE" ]; then
 fi
 ###### Config mysql 
 ### create my.conf
-echo "[mysqld]" >> /etc/my.cnf
-echo "port=3306" >> /etc/my.cnf
-echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/my.cnf
-echo "datadir=/var/lib/mysql" >>/etc/my.cnf
-echo "[client]" >> /etc/my.cnf
-echo "port=3306" >> /etc/my.cnf
-echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/my.cnf
-echo "[mysql]" >> /etc/my.cnf
-echo "no-auto-rehash" >> /etc/my.cnf
-echo "[myisamchk]" >> /etc/my.cnf
-echo "set-variable= key_buffer=128M" >> /etc/my.cnf
-service mysql start
+echo "# The MariaDB configuration file" >etc/mysql/my.cnf
+echo "!includedir /etc/mysql/conf.d/" >>/etc/mysql/mycnf
+echo "!includedir /etc/mysql/mariadb.conf.d/" >>/etc/mysql/mycnf
+echo "[mysqld]" >> /etc/mysql/my.cnf
+echo "port=3306" >> /etc/mysql/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+echo "datadir=/var/lib/mysql" >>/etc/mysql/my.cnf
+echo "[client]" >> /etc/mysql/my.cnf
+echo "port=3306" >> /etc/mysql/my.cnf
+echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+echo "[mysql]" >> /etc/mysql/my.cnf
+echo "no-auto-rehash" >> /etc/mysql/my.cnf
+echo "[myisamchk]" >> /etc/mysql/my.cnf
+echo "set-variable= key_buffer=128M" >> /etc/mysql/my.cnf
+mysql_install_db
+service mysql stop
+
 chmod 775 /var/run/mysqld
 chmod 777 /var/lib/mysql
 mysql -uroot -e "CREATE USER 'root'@'%';"
