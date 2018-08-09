@@ -25,6 +25,7 @@ mysql_install_db
 service mysql stop
 chmod 755 /var/run
 chmod 777 /var/lib/mysql
+echo "########### Finish initial database ###################"
 service mysql start
 mysql -uroot -e "CREATE USER 'root'@'%';"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
