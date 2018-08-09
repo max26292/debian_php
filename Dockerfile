@@ -18,6 +18,10 @@ RUN \
     apt-get install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-xml && \
     curl -sS https://getcomposer.org/installer | php && \ 
     mv composer.phar /usr/local/bin/composer  && \
+    wget https://dev.mysql.com/get/mysql-apt-config_0.8.6-1_all.deb && \
+    apt install -y gdebi-core && \
+    gdebi mysql-apt-config_0.8.6-1_all.deb && \
+    apt install -y mysql-server && \
     apt-get -y upgrade   
 EXPOSE 80 8080 3306 3307 9000
 WORKDIR /var/www/html
@@ -30,4 +34,4 @@ RUN chmod 755 /init.sh && \
     chmod +x /start.sh && \
     /init.sh
 VOLUME [ "/var/lib/mysql" ]
-ENTRYPOINT [ "start.sh" ]
+ENTRYPOINT ["/start.sh"]
