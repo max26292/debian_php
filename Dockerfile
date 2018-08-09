@@ -23,7 +23,7 @@ RUN \
     wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql && \
     apt-key add /tmp/RPM-GPG-KEY-mysql && \
     apt-get -y update && \
-    apt-get install -y install mysql-server && \
+    apt-get install -y mysql-server && \
     apt-get -y upgrade   
 EXPOSE 80 8080 3306 3307 9000
 WORKDIR /var/www/html
