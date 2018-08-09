@@ -7,7 +7,7 @@ if [ ! -f "$SERVER_NAME_FILE" ]; then
 fi
 ###### Config mysql 
 ### create my.conf
-echo "# The MariaDB configuration file" >etc/mysql/my.cnf
+echo "# The MariaDB configuration file" >/etc/mysql/my.cnf
 echo "!includedir /etc/mysql/conf.d/" >>/etc/mysql/mycnf
 echo "!includedir /etc/mysql/mariadb.conf.d/" >>/etc/mysql/mycnf
 echo "[mysqld]" >> /etc/mysql/my.cnf
@@ -23,11 +23,9 @@ echo "[myisamchk]" >> /etc/mysql/my.cnf
 echo "set-variable= key_buffer=128M" >> /etc/mysql/my.cnf
 mysql_install_db
 service mysql stop
-
 chmod 775 /var/run/mysqld
 chmod 777 /var/lib/mysql
+service mysql start
 mysql -uroot -e "CREATE USER 'root'@'%';"
 mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
-chmod 755 /init_database.sh
-/init_database.sh
 service mysql stop
