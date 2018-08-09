@@ -19,9 +19,6 @@ echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
 echo "[mysql]" >> /etc/mysql/my.cnf
 echo "no-auto-rehash" >> /etc/mysql/my.cnf
 echo "[myisamchk]" >> /etc/mysql/my.cnf
-echo "set-variable= key_buffer=128M" >> /etc/mysql/my.cnf
-mysql_install_db 
-service mysql stop
 chmod 755 /var/run
 chmod 777 /var/lib/mysql
 mkdir /var/run/mysqld
@@ -30,7 +27,7 @@ chown -R mysql /var/run/mysqld
 chgrp -R mysql /var/lib/mysql
 echo "########### Finish initial database ###################"
 service mysql start
-mysql -uroot -e "CREATE USER 'root'@'%';"
-mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
+mysql -uroot -proot -e "CREATE USER 'root'@'%';"
+mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
 sleep 1
 service mysql stop
