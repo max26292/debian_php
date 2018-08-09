@@ -22,6 +22,9 @@ RUN \
     wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql && \
     apt-key add /tmp/RPM-GPG-KEY-mysql && \
     apt-get -y update && \
+    export DEBIAN_FRONTEND="noninteractive" && \
+    debconf-set-selections <<< "mysql-server mysql-server/root_password password root" && \
+    debconf-set-selections <<< "mysql-server mysql-server/root_password_again password root" && \
     apt-get install -y mysql-community-server mysql-client && \    
     # apt-get install -y mariadb-client mariadb-server && \
     apt-get -y upgrade   
