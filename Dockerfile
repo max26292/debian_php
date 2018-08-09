@@ -21,6 +21,7 @@ RUN \
     echo "deb-src http://repo.mysql.com/apt/debian/ stretch mysql-5.7" >> /etc/apt/sources.list.d/mysql.list && \
     wget -O /tmp/RPM-GPG-KEY-mysql https://repo.mysql.com/RPM-GPG-KEY-mysql && \
     apt-key add /tmp/RPM-GPG-KEY-mysql && \
+    apt-get install -y debconf-utils && \
     apt-get -y update && \
     export DEBIAN_FRONTEND="noninteractive" && \
     debconf-set-selections <<< "mysql-server mysql-server/root_password password root" && \
