@@ -28,4 +28,4 @@ RUN chmod 755 /init.sh && \
     chmod 755 /start.sh &&\
     /init.sh
 VOLUME [ "/var/lib/mysql" ]
-ENTRYPOINT [ "start.sh" ]
+# ENTRYPOINT [ "start.sh" ]
