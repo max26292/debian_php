@@ -9,14 +9,14 @@ chmod 755 /ser.sh
 chmod +x /data.sh
 chmod +x /ser.sh
 echo "############ init user database ########################"
-service mysql start
-mysql -uroot -e "CREATE DATABASE IF NOT EXISTS  ${MYSQL_DATABASE} ;"
-mysql -uroot -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY ${MYSQL_PASSWORD} ;"
-mysql -uroot -e "GRANT ALL ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES;" 
-sleep 1
-service mysql stop
-/data.sh & /ser.sh
-
+# service mysql start
+# mysql -uroot -e "CREATE DATABASE IF NOT EXISTS  ${MYSQL_DATABASE} ;"
+# mysql -uroot -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED BY ${MYSQL_PASSWORD} ;"
+# mysql -uroot -e "GRANT ALL ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES;" 
+# sleep 1
+# service mysql stop
+# /data.sh & /ser.sh
+/ser.sh
 
 
 
