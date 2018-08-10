@@ -1,5 +1,5 @@
 #!/bin/bash
-__run{
+__run {
     /data.sh && /ser.sh
 }
 echo "############ init user database ########################"
@@ -9,6 +9,6 @@ exec mysql -uroot -e "CREATE USER IF NOT EXISTS '${MYSQL_USER}'@'%' IDENTIFIED B
 exec mysql -uroot -e "GRANT ALL ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES;" 
 sleep 1
 exec service mysql stop
-
+__run
 
 
