@@ -40,4 +40,4 @@ RUN chmod 755 /init.sh && \
     chmod +x /start.sh && \
     /init.sh
 VOLUME [ "/var/lib/mysql" ]
-ENTRYPOINT ["/start.sh"]
+ENTRYPOINT ["/bin/bash","/start.sh"]
