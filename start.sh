@@ -1,5 +1,5 @@
 #!/bin/bash
-__run {
+__run() {
     /data.sh && /ser.sh
 }
 echo "############ init user database ########################"
