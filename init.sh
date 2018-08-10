@@ -13,6 +13,7 @@ echo "!includedir /etc/mysql/mariadb.conf.d/" >>/etc/mysql/mycnf
 echo "[mysqld]" >> /etc/mysql/my.cnf
 echo "port=3306" >> /etc/mysql/my.cnf
 echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
+echo "bind-address=0.0.0.0" >> /etc/mysql/my.cnf
 echo "[client]" >> /etc/mysql/my.cnf
 echo "port=3306" >> /etc/mysql/my.cnf
 echo "socket=/var/run/mysqld/mysqld.sock" >> /etc/mysql/my.cnf
