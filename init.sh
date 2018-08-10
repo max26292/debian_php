@@ -30,3 +30,13 @@ mysql -uroot -proot -e "CREATE USER 'root'@'%';"
 mysql -uroot -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES; "
 sleep 1
 service mysql stop
+##init start file
+echo "#!/bin/bash" > /data.sh
+echo "service mysql start" >> data.sh
+echo "#!/bin/bash" > /ser.sh
+echo "apache2ctl -D FOREGROUND" >>ser.sh
+sleep 1
+chmod 755 /data.sh
+chmod 755 /ser.sh
+chmod +x /data.sh
+chmod +x /ser.sh
