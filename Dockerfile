@@ -27,17 +27,21 @@ RUN \
     debconf-set-selections << "mysql-server mysql-server/root_password password root" && \
     debconf-set-selections << "mysql-server mysql-server/root_password_again password root" && \
     apt-get install -y mysql-community-server && \    
-    # apt-get install -y mariadb-client mariadb-server && \
+    apt-get install -y mariadb-client mariadb-server && \
     apt-get -y upgrade   
-EXPOSE 80 8080 3306 3307 9000
 WORKDIR /var/www/html
 COPY ./init.sh /
 COPY ./start.sh /
 COPY ./php.ini /etc/php/7.2/cli/
+COPY ./boot.sh /
 RUN chmod 755 /init.sh && \
     chmod +x /init.sh && \
-    chmod 777 /start.sh &&\
+    chmod 777 /start.sh &&\    
     chmod +x /start.sh && \
+    chmod 777 /boot.sh &&\    
+    chmod +x /boot.sh && \
     /init.sh
+ENTRYPOINT [ "/bin/bash" , "/start.sh" ]
+EXPOSE 80 8080 3306 3307 9000
 VOLUME [ "/var/lib/mysql" ]
-ENTRYPOINT ["/bin/bash","/start.sh"]
+# CMD [ "/bin/bash" , "/boot.sh" ]

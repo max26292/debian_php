@@ -11,6 +11,6 @@ echo mysql -uroot -e "GRANT ALL ON PRIVILEGES ${MYSQL_DATABASE}.* TO '${MYSQL_US
 mysql -uroot -e "GRANT ALL ON ${MYSQL_DATABASE}.* TO '${MYSQL_USER}'@'%' WITH GRANT OPTION ; FLUSH PRIVILEGES;" 
 sleep 1
 service mysql stop
-__run
+exec "$@"
 
 
