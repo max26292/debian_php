@@ -23,8 +23,6 @@ COPY ./php.ini /etc/php/7.2/cli/
 COPY ./boot.sh /
 RUN chmod 755 /init.sh && \
     chmod +x /init.sh && \
-    chmod 777 /start.sh &&\
-    chmod +x /start.sh && \
     chmod 777 /boot.sh &&\
     chmod +x /boot.sh && \
     /init.sh
