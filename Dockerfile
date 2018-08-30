@@ -19,7 +19,6 @@ RUN \
     apt-get -y update
 WORKDIR /var/www/html
 COPY ./init.sh /
-COPY ./start.sh /
 COPY ./php.ini /etc/php/7.2/cli/
 COPY ./boot.sh /
 RUN chmod 755 /init.sh && \
