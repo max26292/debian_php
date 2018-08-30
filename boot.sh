@@ -1,5 +1,5 @@
 #!/bin/bash
 __run() {
-    /data.sh && /ser.sh
+    /ser.sh
 }
 __run
