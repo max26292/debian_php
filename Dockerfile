@@ -29,6 +29,6 @@ RUN chmod 755 /init.sh && \
     chmod 777 /boot.sh &&\
     chmod +x /boot.sh && \
     /init.sh
-ENTRYPOINT [ "/bin/bash" , "/start.sh" ]
+ENTRYPOINT [ "/bin/bash" , "/boot.sh" ]
 EXPOSE 80 9000
 # CMD [ "/bin/bash" , "/boot.sh" ]
