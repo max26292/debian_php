@@ -15,8 +15,8 @@ RUN \
     apt-get install -y apache2 libapache2-mod-php7.2 && \
     apt-get install -y php7.2 php7.2-cli php7.2-common php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-xml && \
     curl -sS https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer  && \    
-    apt-get -y update && \
+    mv composer.phar /usr/local/bin/composer  && \
+    apt-get -y update
 WORKDIR /var/www/html
 COPY ./init.sh /
 COPY ./start.sh /
