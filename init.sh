@@ -5,6 +5,7 @@ if [ ! -f "$SERVER_NAME_FILE" ]; then
    echo "ServerName localhost" > $SERVER_NAME_FILE
    a2enconf servername
 fi
+a2enmod rewrite
 service apache2 start
 service apache2 reload
 service apache2 stop

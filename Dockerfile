@@ -20,6 +20,7 @@ RUN \
 WORKDIR /var/www/html
 COPY ./init.sh /
 COPY ./php.ini /etc/php/7.2/cli/
+COPY ./apache2.conf /etc/apache2/
 COPY ./boot.sh /
 RUN chmod 755 /init.sh && \
     chmod +x /init.sh && \
